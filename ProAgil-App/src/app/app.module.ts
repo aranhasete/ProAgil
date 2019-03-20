@@ -2,27 +2,38 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BsDropdownModule, TooltipModule, ModalModule } from 'ngx-bootstrap';
+
+import { EventoService } from './_services/evento.service';
+
 import { AppComponent } from './app.component';
 import { EventosComponent } from './eventos/eventos.component';
-// import { HttpClient } from 'selenium-webdriver/http';
-import { from } from 'rxjs';
 import { NavComponent } from './nav/nav.component';
+
+import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
+
+import { from } from 'rxjs';
 
 @NgModule({
    declarations: [
       AppComponent,
       EventosComponent,
-      NavComponent
+      NavComponent,
+      DateTimeFormatPipePipe
    ],
    imports: [
       BrowserModule,
+      BsDropdownModule.forRoot(),
+      TooltipModule.forRoot(),
+      ModalModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
       FormsModule
    ],
-   providers: [],
+   providers: [
+      EventoService
+   ],
    bootstrap: [
       AppComponent
    ]
